@@ -41,8 +41,8 @@ namespace Equality_Comparison_and_Operator_Overloading
         {
             int hash = WeightInGrams;
             hash = hash * 17 + AgeInMonths;
-            hash = hash * 13 + Name.ToCharArray().Sum(n => (int)n * 7);
-            hash = hash * 23 + Type.ToCharArray().Sum(n => (int)n * 11);
+            hash = hash * 13 + Name.ToCharArray().Select((n,i) => (int)n * i * 7).Sum();
+            hash = hash * 23 + Type.ToCharArray().Select((n, i) => (int)n * i * 11).Sum();
             return hash;
         }
 
