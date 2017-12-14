@@ -22,7 +22,7 @@ namespace Equality_Comparison_and_Operator_Overloading
             {
                 { new Duck("Sir Quackalot", "Mallard", 100, 17), "He quacks a lot." },
                 { new Duck("Quack Sparrow", "Fulvous Whistling", 132, 12), "He sails the seven ponds." },
-                { new Duck("Quackie Chan", "Albio", 13, 3), "He will quack you up"},
+                { new Duck("Quackie Chan", "Albio", 13, 3), "He will duck you up"},
                 { new Duck("Duck Norris", "West Indian Whistling", int.MaxValue, int.MaxValue), "He is the reason Waldo is hiding..." },
                 { new Duck("Firequacker", "Black-bellied Whistling", 108, 31), "" }
             };
