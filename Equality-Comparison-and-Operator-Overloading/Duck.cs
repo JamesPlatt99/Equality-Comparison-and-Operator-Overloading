@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Equality_Comparison_and_Operator_Overloading
 {
-    public class Duck
+    public class Duck : IComparable
     {
         public Duck(string name, string type, int weightInGrams, int ageInMonths)
         {
@@ -22,9 +22,21 @@ namespace Equality_Comparison_and_Operator_Overloading
         public int WeightInGrams { get; }
         public int AgeInMonths { get; }
         #endregion
+        
+        #region "Public Methods"
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return -1;
+            if (obj.GetType() == this.GetType())
+            {
+                return this.AgeInMonths - ((Duck)obj).AgeInMonths;
+            }
+            return 0;
+        }
+        #endregion
 
         #region "Overrides"
-        
+
         public override int GetHashCode()
         {
             int hash = WeightInGrams;
@@ -34,11 +46,38 @@ namespace Equality_Comparison_and_Operator_Overloading
             return hash;
         }
 
+        public override bool Equals(object obj)
+        {
+            return (obj != null && this.GetHashCode() == obj.GetHashCode());
+        }
+
         public override string ToString()
         {
             return String.Format($"Weiging in at {WeightInGrams} grams its {Name}! The {Type} duck aged {AgeInMonths} months!");
         }
 
+        #endregion
+
+        #region "Operators"
+        public static bool operator ==(Duck left, Duck right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Duck left, Duck right)
+        {
+            return !Equals(left, right);
+        }
+
+        public static bool operator <(Duck left, Duck right)
+        {
+            return left.AgeInMonths < right.AgeInMonths;
+        }
+
+        public static bool operator >(Duck left, Duck right)
+        {
+            return left.AgeInMonths > right.AgeInMonths;
+        }
         #endregion
     }
 
